@@ -6,7 +6,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 const Container: React.FC<Props> = ({ children, ...props }) => {
   return (
-    <div className="container mx-auto px-5" {...props}>
+    <div className="container mx-auto px-[20%]" {...props}>
       {children}
     </div>
   )
