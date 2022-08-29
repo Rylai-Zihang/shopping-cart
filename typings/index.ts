@@ -7,6 +7,7 @@ export interface IProduct {
   description: string
   format: FormatGroup
   price: Price
+  src: string
 }
 
 export interface ICartProduct extends IProduct {

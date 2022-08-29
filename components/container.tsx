@@ -5,8 +5,11 @@ interface Props extends HTMLAttributes<HTMLElement> {
 }
 
 const Container: React.FC<Props> = ({ children, ...props }) => {
+  const { className, ...otherProps } = props
+  const classes =
+    `container mx-auto px-[15%]` + (className ? ` ${className}` : '')
   return (
-    <div className="container mx-auto px-[20%]" {...props}>
+    <div className={classes} {...otherProps}>
       {children}
     </div>
   )

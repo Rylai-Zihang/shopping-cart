@@ -6,11 +6,9 @@ import useSelector from '../hooks/useSelector'
 
 
 const Products = () => {
-  const cart = useSelector(state => state.cart.cart)
-  console.log({ cart })
-  const products:IProduct[] = []
+  const products:IProduct[] = useSelector(state => state.cart.cart)
   return (
-    <Container>
+    <Container className="py-10">
       {products?.map((p) => (
         <Product product={p} key={p.id} />
       ))}

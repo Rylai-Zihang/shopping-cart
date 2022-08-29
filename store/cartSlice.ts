@@ -9,12 +9,14 @@ type SliceState = {
 const initialState: SliceState = {
   cart: [
     {
-      id: 111,
-      title: '111',
-      description: '1111',
+      id: 1,
+      title: 'Starry Night',
+      description:
+        'High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh.',
       format: 'physical',
-      price: { physical: 111, digital: 222 },
-      quantity: 1
+      price: { physical: 79.85, digital: 27.95 },
+      quantity: 1,
+      src: 'https://demo.snipcart.com/images/starry-night.jpg'
     }
   ]
 }

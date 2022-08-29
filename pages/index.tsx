@@ -13,10 +13,10 @@ const Home: NextPage = () => {
     <Provider store={store}>
         <ChakraProvider>
             <Header />
-            <Button onClick={onToggle}>Open Drawer</Button>
             <Products />
             <Cart isOpen={isOpen} onClose={onClose}></Cart>
-            <Footer />
+            {/* <Button onClick={onToggle}>Open Drawer</Button> */}
+            {/* <Footer /> */}
         </ChakraProvider>
     </Provider>
   )
