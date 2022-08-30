@@ -20,7 +20,7 @@ const NumberInput: React.FC<Props> = ({ quantity, increaseCb, decreaseCb }) => {
   } = useNumberInput({
     step: 1,
     defaultValue: quantity,
-    min: 1
+    min: -1
   })
 
   const inc = getIncrementButtonProps()

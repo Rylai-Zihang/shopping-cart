@@ -23,15 +23,15 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
   const dispatch = useDispatch()
 
   const clickRemove = () => {
-    dispatch(removeItem(id))
+    dispatch(removeItem({ id, format }))
   }
 
   const clickIncrease = () => {
-    dispatch(increaseQuantity(id))
+    dispatch(increaseQuantity({ id, format }))
   }
 
   const clickDecrease = () => {
-    dispatch(decreaseQuantity(id))
+    dispatch(decreaseQuantity({ id, format }))
   }
 
   return (

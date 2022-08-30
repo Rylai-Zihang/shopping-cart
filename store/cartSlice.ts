@@ -1,4 +1,4 @@
-// store/cartSlice.js
+import { FormatGroup } from './../typings/index'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICartProduct } from './../typings/index'
 
@@ -6,8 +6,22 @@ type SliceState = {
   cartProducts: ICartProduct[]
 }
 
+type CartInfo = { id: number; format: FormatGroup }
+
 const initialState: SliceState = {
-    cartProducts: []
+  cartProducts: []
+}
+
+type K = (keyof ICartProduct)[]
+
+const findTarget = (
+  list: ICartProduct[],
+  source: Partial<ICartProduct>,
+  keys: K
+) => {
+  return list.find(item => {
+    return keys.reduce((pre, key) => pre && source[key] === item[key], true)
+  })
 }
 
 const cartSlice = createSlice({
@@ -15,28 +29,45 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ICartProduct>) => {
-      const itemInCart = state.cartProducts.find(item => item.id === action.payload.id)
-      if (itemInCart) {
-        itemInCart.quantity++
+      const target = findTarget(state.cartProducts, action.payload, [
+        'id',
+        'format'
+      ])
+      if (target) {
+        target.quantity++
       } else {
         state.cartProducts.push({ ...action.payload, quantity: 1 })
       }
     },
-    increaseQuantity: (state, action: PayloadAction<number>) => {
-      const item = state.cartProducts.find(item => item.id === action.payload)
-      item!.quantity++
+    increaseQuantity: (state, action: PayloadAction<CartInfo>) => {
+      const target = findTarget(state.cartProducts, action.payload, [
+        'id',
+        'format'
+      ])
+      target!.quantity++
     },
-    decreaseQuantity: (state, action: PayloadAction<number>) => {
-      const item = state.cartProducts.find(item => item.id === action.payload)
-      if (item!.quantity === 1) {
-        item!.quantity = 1
+    decreaseQuantity: (state, action: PayloadAction<CartInfo>) => {
+      const target = findTarget(state.cartProducts, action.payload, [
+        'id',
+        'format'
+      ])
+      if (target!.quantity === 1) {
+        const { id, format } = action.payload
+        // remove the target from list
+        const items = state.cartProducts.filter(
+          item => item.id !== id || item.format !== format
+        )
+        state.cartProducts = items
       } else {
-        item!.quantity--
+        target!.quantity--
       }
     },
-    removeItem: (state, action: PayloadAction<number>) => {
-      const removeItem = state.cartProducts.filter(item => item.id !== action.payload)
-      state.cartProducts = removeItem
+    removeItem: (state, action: PayloadAction<CartInfo>) => {
+      const { id, format } = action.payload
+      const items = state.cartProducts.filter(
+        item => item.id !== id || item.format !== format
+      )
+      state.cartProducts = items
     }
   }
 })

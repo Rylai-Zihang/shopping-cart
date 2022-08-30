@@ -40,7 +40,7 @@ const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
 
         <DrawerBody className='!p-0'>
           {cartProducts?.map((cartProduct) => (
-            <CartItem key={cartProduct.id} cartProduct={cartProduct}/>
+            <CartItem key={`${cartProduct.id} - ${cartProduct.format}`} cartProduct={cartProduct}/>
           ))}
         </DrawerBody>
 
