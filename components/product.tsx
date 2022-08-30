@@ -16,14 +16,18 @@ import { addToCart } from '../store/cartSlice'
 interface Props {
   product: IProduct
   onToggle: () => void
+  index: number
 }
 
-const Product: React.FC<Props> = ({ product, onToggle }) => {
+const Product: React.FC<Props> = ({ product, onToggle, index }) => {
   const [quantity, setQuantity] = useState(1)
   const [format, setFormat] = useState<FormatGroup>('physical')
   const { id, title, description, price, src } = product
   const totalPrice = price[format] * quantity
   const priceStr = `$${totalPrice.toFixed(2)}`
+
+  const containerClass = `flex${index % 2 === 1 ? ' flex-row-reverse' : ''}`
+  const imageClass = `image${index % 2 === 1 ? ' left' : ''}`
 
   const dispatch = useDispatch()
 
@@ -42,8 +46,8 @@ const Product: React.FC<Props> = ({ product, onToggle }) => {
   }
 
   return (
-    <div className="flex">
-      <div className="left w-1/2">
+    <div className={containerClass}>
+      <div className="w-1/2">
         <h2 className="text-[40px] font-semibold mb-6">{title}</h2>
         <p className="text-xl mb-6">{description}</p>
         <div className="w-3/5 grid grid-cols-3 gap-3">
@@ -85,9 +89,9 @@ const Product: React.FC<Props> = ({ product, onToggle }) => {
           </Button>
         </div>
       </div>
-      <div className="relative right w-1/2">
+      <div className="relative w-1/2">
         <Image
-          className="image"
+          className={imageClass}
           src={src}
           alt={title}
           width={500}
