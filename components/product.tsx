@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import Image from 'next/image'
 import { IProduct, FormatGroup, ICartProduct } from '../typings'
 import { addToCart } from '../store/cartSlice'
+import { formatPrice } from '../utils'
 
 interface Props {
   product: IProduct
@@ -24,7 +25,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
   const [format, setFormat] = useState<FormatGroup>('physical')
   const { id, title, description, price, src } = product
   const totalPrice = price[format] * quantity
-  const priceStr = `$${totalPrice.toFixed(2)}`
+  const formattedPrice = formatPrice(totalPrice)
 
   const containerClass = `flex${index % 2 === 1 ? ' flex-row-reverse' : ''}`
   const imageClass = `image${index % 2 === 1 ? ' left' : ''}`
@@ -79,7 +80,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
               <option value="digital">Digital Copy</option>
             </Select>
           </div>
-          <div className="text-xl font-semibold leading-10">{priceStr}</div>
+          <div className="text-xl font-semibold leading-10">{formattedPrice}</div>
           <Button
             className="col-span-2"
             colorScheme="facebook"

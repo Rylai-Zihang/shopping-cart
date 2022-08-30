@@ -9,6 +9,7 @@ import {
   decreaseQuantity,
   removeItem
 } from '../store/cartSlice'
+import { formatPrice } from '../utils'
 
 interface Props {
   cartProduct: ICartProduct
@@ -18,7 +19,7 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
   const { id, title, price, src, format, quantity } = cartProduct
   const totalTitle = title + (format === 'digital' ? '(.jpg)' : '')
   const totalPrice = price[format] * quantity
-  const priceStr = `$${totalPrice.toFixed(2)}`
+  const formattedPrice = formatPrice(totalPrice)
 
   const dispatch = useDispatch()
 
@@ -35,7 +36,7 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
   }
 
   return (
-    <div className="p-8 border-b-normalGray border-1">
+    <div className="p-8 border-b border-b-lightGray border-1">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Image src={src} alt={title} width={40} height={32} quality={20} />
@@ -61,7 +62,7 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
           increaseCb={clickIncrease}
           decreaseCb={clickDecrease}
         />
-        <span>{priceStr}</span>
+        <span>{formattedPrice}</span>
       </div>
     </div>
   )
