@@ -7,7 +7,7 @@ import useSelector from '../hooks/useSelector'
 interface Props { onToggle: () => void }
 
 const Products: React.FC<Props> = ({ onToggle }) => {
-  const products: ICartProduct[] = useSelector<RootState, ICartProduct[]>((state) => state.cart.cart)
+  const products: IProduct[] = useSelector<RootState, IProduct[]>((state) => state.product.product)
   return (
     <Container className="py-10">
       {products?.map((p) => (

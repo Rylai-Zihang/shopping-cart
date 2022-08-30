@@ -89,7 +89,7 @@ const Product: React.FC<Props> = ({ product, onToggle }) => {
         <Image
           className="image"
           src={src}
-          alt={description}
+          alt={title}
           width={500}
           height={400}
         />

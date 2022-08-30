@@ -8,6 +8,10 @@ import {
   DrawerFooter,
   Button
 } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
+import { ICartProduct } from '../typings'
+import CartItem from './cartItem'
 
 interface Props {
   isOpen: boolean
@@ -15,6 +19,10 @@ interface Props {
 }
 
 const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
+  const cartProducts: ICartProduct[] = useSelector<RootState, ICartProduct[]>(
+    state => state.cart.cartProducts
+  )
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -25,12 +33,16 @@ const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerHeader className="flex items-center leading-[4rem] bg-gray !font-normal">
+        <DrawerHeader className="flex items-center leading-[4rem] bg-lightGray !font-normal">
           <DrawerCloseButton className="mt-6 hover:!bg-gray" />
           Cart Summary
         </DrawerHeader>
 
-        <DrawerBody>body</DrawerBody>
+        <DrawerBody className='!p-0'>
+          {cartProducts?.map((cartProduct) => (
+            <CartItem key={cartProduct.id} cartProduct={cartProduct}/>
+          ))}
+        </DrawerBody>
 
         <DrawerFooter>
           <Button size="sm" variant="outline" mr={3} onClick={onClose}>
