@@ -1,6 +1,5 @@
-import { FormatGroup } from './../typings/index'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ICartProduct } from './../typings/index'
+import { FormatGroup , ICartProduct } from './../typings/index'
 
 type SliceState = {
   cartProducts: ICartProduct[]

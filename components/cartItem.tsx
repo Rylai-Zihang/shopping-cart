@@ -1,15 +1,15 @@
 import { DeleteIcon } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
 import Image from 'next/image'
-import NumberInput from './numberInput'
-import { ICartProduct } from '../typings'
 import { useDispatch } from 'react-redux'
+import { ICartProduct } from '../typings'
 import {
   increaseQuantity,
   decreaseQuantity,
   removeItem
 } from '../store/cartSlice'
 import { formatPrice } from '../utils'
+import NumberInput from './numberInput'
 
 interface Props {
   cartProduct: ICartProduct

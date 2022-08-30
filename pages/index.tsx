@@ -11,12 +11,12 @@ const Home: NextPage = () => {
   const { isOpen, onClose, onToggle } = useDisclosure()
   return (
     <Provider store={store}>
-        <ChakraProvider>
-            <Header />
-            <Products onToggle={onToggle}/>
-            <Cart isOpen={isOpen} onClose={onClose}></Cart>
-            {/* <Footer /> */}
-        </ChakraProvider>
+      <ChakraProvider>
+        <Header />
+        <Products onToggle={onToggle}/>
+        <Cart isOpen={isOpen} onClose={onClose}></Cart>
+        {/* <Footer /> */}
+      </ChakraProvider>
     </Provider>
   )
 }
