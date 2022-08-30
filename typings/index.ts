@@ -1,4 +1,4 @@
-type FormatGroup = 'physical' | 'digital'
+export type FormatGroup = 'physical' | 'digital'
 type Price = Record<FormatGroup, number>
 
 export interface IProduct {

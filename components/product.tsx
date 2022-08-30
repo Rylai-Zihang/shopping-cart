@@ -7,9 +7,11 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { IProduct } from '../typings'
+import { IProduct, FormatGroup, ICartProduct } from '../typings'
+import { addToCart } from '../store/cartSlice'
 
 interface Props {
   product: IProduct
@@ -17,9 +19,26 @@ interface Props {
 
 const Product: React.FC<Props> = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
-  const { id, title, description, format, price, src } = product
+  const [format, setFormat] = useState<FormatGroup>('physical')
+  const { id, title, description, price, src } = product
   const totalPrice = price[format] * quantity
-  const priceStr = `$${totalPrice}`
+  const priceStr = `$${totalPrice.toFixed(2)}`
+
+  const dispatch = useDispatch()
+
+  function clickAddToChart() {
+    const cartProduct: ICartProduct = {
+      id,
+      title,
+      description,
+      price,
+      src,
+      format,
+      quantity
+    }
+    dispatch(addToCart(cartProduct))
+  }
+
   return (
     <div className="flex">
       <div className="left w-1/2">
@@ -43,13 +62,23 @@ const Product: React.FC<Props> = ({ product }) => {
             </NumberInput>
           </div>
           <div className="col-span-2">
-            <Select size="sm">
+            <Select
+              size="sm"
+              value={format}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setFormat(event.target.value as FormatGroup)
+              }
+            >
               <option value="physical">Physical Copy</option>
               <option value="digital">Digital Copy</option>
             </Select>
           </div>
           <div className="text-xl font-semibold leading-10">{priceStr}</div>
-          <Button className="col-span-2" colorScheme="facebook">
+          <Button
+            className="col-span-2"
+            colorScheme="facebook"
+            onClick={clickAddToChart}
+          >
             ADD TO CART
           </Button>
         </div>
