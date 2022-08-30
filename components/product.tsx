@@ -27,7 +27,9 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
   const totalPrice = price[format] * quantity
   const formattedPrice = formatPrice(totalPrice)
 
-  const containerClass = `flex${index % 2 === 1 ? ' flex-row-reverse' : ''}`
+  const containerClass = `py-8 flex${
+    index % 2 === 1 ? ' flex-row-reverse' : ''
+  }`
   const imageClass = `image${index % 2 === 1 ? ' left' : ''}`
 
   const dispatch = useDispatch()
@@ -80,7 +82,9 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
               <option value="digital">Digital Copy</option>
             </Select>
           </div>
-          <div className="text-xl font-semibold leading-10">{formattedPrice}</div>
+          <div className="text-xl font-semibold leading-10">
+            {formattedPrice}
+          </div>
           <Button
             className="col-span-2"
             colorScheme="facebook"
