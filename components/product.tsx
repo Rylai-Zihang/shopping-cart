@@ -15,9 +15,10 @@ import { addToCart } from '../store/cartSlice'
 
 interface Props {
   product: IProduct
+  onToggle: () => void
 }
 
-const Product: React.FC<Props> = ({ product }) => {
+const Product: React.FC<Props> = ({ product, onToggle }) => {
   const [quantity, setQuantity] = useState(1)
   const [format, setFormat] = useState<FormatGroup>('physical')
   const { id, title, description, price, src } = product
@@ -37,6 +38,7 @@ const Product: React.FC<Props> = ({ product }) => {
       quantity
     }
     dispatch(addToCart(cartProduct))
+    onToggle()
   }
 
   return (
