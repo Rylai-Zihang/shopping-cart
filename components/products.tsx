@@ -1,8 +1,8 @@
+import { useSelector } from 'react-redux'
 import Product from './product'
 import Container from './container'
-import { ICartProduct, IProduct } from '../typings'
+import { IProduct } from '../typings'
 import { RootState } from '../store'
-import useSelector from '../hooks/useSelector'
 
 interface Props { onToggle: () => void }
 
