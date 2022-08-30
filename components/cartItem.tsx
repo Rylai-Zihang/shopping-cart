@@ -1,14 +1,14 @@
 import { DeleteIcon } from '@chakra-ui/icons'
-import {
-  IconButton,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper
-} from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 import Image from 'next/image'
+import NumberInput from './numberInput'
 import { ICartProduct } from '../typings'
+import { useDispatch } from 'react-redux'
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem
+} from '../store/cartSlice'
 
 interface Props {
   cartProduct: ICartProduct
@@ -20,6 +20,20 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
   const totalPrice = price[format] * quantity
   const priceStr = `$${totalPrice.toFixed(2)}`
 
+  const dispatch = useDispatch()
+
+  const clickRemove = () => {
+    dispatch(removeItem(id))
+  }
+
+  const clickIncrease = () => {
+    dispatch(increaseQuantity(id))
+  }
+
+  const clickDecrease = () => {
+    dispatch(decreaseQuantity(id))
+  }
+
   return (
     <div className="p-8 border-b-normalGray border-1">
       <div className="flex items-center justify-between">
@@ -29,6 +43,7 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
         </div>
 
         <IconButton
+          onClick={clickRemove}
           variant="outline"
           color="#9e2215"
           aria-label="Call Sage"
@@ -41,13 +56,11 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
         Quantity
       </div>
       <div className="flex items-center justify-between mb-10">
-        <NumberInput step={1} defaultValue={quantity} min={1}>
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
+        <NumberInput
+          quantity={quantity}
+          increaseCb={clickIncrease}
+          decreaseCb={clickDecrease}
+        />
         <span>{priceStr}</span>
       </div>
     </div>
