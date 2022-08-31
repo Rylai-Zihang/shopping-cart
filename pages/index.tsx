@@ -7,9 +7,11 @@ import Cart from '../components/cart'
 import Footer from '../components/footer'
 import store from '../store'
 
+
 const Home: NextPage = () => {
   const { isOpen, onClose, onToggle } = useDisclosure()
   return (
+
     <Provider store={store}>
       <ChakraProvider>
         <Header />

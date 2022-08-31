@@ -36,7 +36,7 @@ const CartItem: React.FC<Props> = ({ cartProduct }) => {
   }
 
   return (
-    <div className="p-8 border-b border-b-lightGray border-1">
+    <div className="p-8 border-b border-1">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Image src={src} alt={title} width={40} height={32} quality={20} />

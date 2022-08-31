@@ -6,7 +6,8 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
-  Button
+  Button,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
@@ -30,6 +31,8 @@ const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
   }, 0)
   const formattedPrice = formatPrice(totalPrice)
 
+  const headerBackgroundColor = useColorModeValue('#f7f7f8', 'gray.800')
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -39,7 +42,7 @@ const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <DrawerOverlay />
       <DrawerContent className="flex flex-col">
-        <DrawerHeader className="flex items-center leading-[4rem] bg-lightGray !font-normal">
+        <DrawerHeader className="flex items-center leading-[4rem] !font-normal" bg={headerBackgroundColor}>
           <DrawerCloseButton className="mt-6 hover:!bg-gray" />
           Cart Summary
         </DrawerHeader>
