@@ -21,14 +21,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ICartProduct>) => {
+      const quantity = action.payload.quantity
       const target = findTarget(state.cartProducts, action.payload, [
         'id',
         'format'
       ])
       if (target) {
-        target.quantity++
+        target.quantity += quantity
       } else {
-        const quantity = action.payload.quantity
         state.cartProducts.push({ ...action.payload, quantity })
       }
     },
