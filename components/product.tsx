@@ -10,9 +10,9 @@ import {
 import { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { IProduct, FormatGroup, ICartProduct } from '../typings'
-import { addToCart } from '../store/cartSlice'
-import { classesHelper, formatPrice } from '../utils'
+import { addToCart } from '@/store/cartSlice'
+import { classesHelper, formatPrice } from '@/utils'
+import { IProduct, FormatGroup, ICartProduct } from '@/typings'
 
 interface Props {
   product: IProduct

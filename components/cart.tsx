@@ -10,9 +10,9 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
-import { selectAllCartProducts } from '../store/cartSlice'
-import { ICartProduct } from '../typings'
-import { formatPrice, getTotalPrice } from '../utils'
+import { selectAllCartProducts } from '@/store/cartSlice'
+import { ICartProduct } from '@/typings/index'
+import { formatPrice, getTotalPrice } from '@/utils/index'
 import CartItem from './cartItem'
 
 interface Props {

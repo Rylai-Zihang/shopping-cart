@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { FormatGroup, ICartProduct } from './../typings/index'
+import { FormatGroup, ICartProduct } from '@/typings/index'
 import { RootState } from './index'
 
 type SliceState = {

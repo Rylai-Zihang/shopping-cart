@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import { classesHelper } from '../utils'
+import { classesHelper } from '@/utils/index'
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: React.ReactElement | string | Array<React.ReactElement | string>

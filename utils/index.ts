@@ -1,4 +1,4 @@
-import { ICartProduct } from './../typings/index'
+import { ICartProduct } from '@/typings/index'
 
 export const formatPrice = (price: number) => {
   return `$${price.toFixed(2)}`

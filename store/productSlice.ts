@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IProduct } from '../typings'
+import { IProduct } from '@/typings'
 
 type SliceState = {
   product: IProduct[]
