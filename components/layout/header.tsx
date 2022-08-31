@@ -1,5 +1,11 @@
 import { MoonIcon, TriangleUpIcon } from '@chakra-ui/icons'
-import { Switch, useColorMode, Button, Icon } from '@chakra-ui/react'
+import {
+  Switch,
+  useColorMode,
+  Button,
+  Icon,
+  useColorModeValue
+} from '@chakra-ui/react'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { selectAllCartProducts } from '@/store/cartSlice'
@@ -19,8 +25,10 @@ const Header: React.FC<Props> = ({ onToggle }) => {
   const totalPrice = getTotalPrice(cartProducts)
   const formattedPrice = formatPrice(totalPrice)
 
+  const headerClass = useColorModeValue('light', 'dark')
+
   return (
-    <div className="border-b border-1">
+    <header className={headerClass}>
       <Container className="py-5 flex justify-between">
         <div className="flex ite ms-center">
           <TriangleUpIcon h={9} className="mr-4" />
@@ -43,7 +51,7 @@ const Header: React.FC<Props> = ({ onToggle }) => {
           </Button>
         </div>
       </Container>
-    </div>
+    </header>
   )
 }
 

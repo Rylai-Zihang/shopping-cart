@@ -1,8 +1,10 @@
+import { useColorModeValue } from '@chakra-ui/react'
 import Container from '@/components/layout/container'
 
 const Footer = () => {
+  const footerClass = useColorModeValue('light', 'dark')
   return (
-    <footer className="bg-accent-1 border-t border-accent-2">
+    <footer className={footerClass}>
       <Container>
         <div className="py-8 flex items-center">
           <div className="text-xs text-center">

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  header::after,
+  footer::before {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #eaeaea;
+    height: 1px;
+  }
+  header.dark::after,
+  footer.dark::before {
+    opacity: 0.2;
+  }
+}
 @layer components {
   .image {
     transform: perspective(650px) rotate(5deg) rotateX(-2.5deg) rotateY(-15deg)
