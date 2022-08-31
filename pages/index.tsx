@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
     <Provider store={store}>
       <ChakraProvider>
-        <Header />
+        <Header onToggle={onToggle}/>
         <Products onToggle={onToggle}/>
         <Cart isOpen={isOpen} onClose={onClose}></Cart>
         <Footer />
