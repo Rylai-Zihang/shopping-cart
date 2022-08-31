@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { FormatGroup , ICartProduct } from './../typings/index'
+import { FormatGroup, ICartProduct } from './../typings/index'
+import { RootState } from './index'
 
 type SliceState = {
   cartProducts: ICartProduct[]
@@ -78,3 +79,6 @@ export const {
   decreaseQuantity,
   removeItem
 } = cartSlice.actions
+
+export const selectAllCartProducts = (state: RootState) =>
+  state.cart.cartProducts
