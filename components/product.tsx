@@ -114,6 +114,8 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
           alt={title}
           width={500}
           height={400}
+          quality={50}
+          priority={index === 0}
         />
       </div>
     </div>
