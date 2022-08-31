@@ -20,7 +20,7 @@ const Header: React.FC<Props> = ({ onToggle }) => {
   const formattedPrice = formatPrice(totalPrice)
 
   return (
-    <div className="border-b-1 ">
+    <div className="border-b border-1">
       <Container className="py-5 flex justify-between">
         <div className="flex ite ms-center">
           <TriangleUpIcon h={9} className="mr-4" />
