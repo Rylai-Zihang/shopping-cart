@@ -47,7 +47,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
 
   const dispatch = useDispatch()
 
-  function clickAddToChart() {
+  const clickAddToChart = () => {
     const cartProduct: ICartProduct = {
       id,
       title,
@@ -61,10 +61,14 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
     onToggle()
   }
 
+  const changeFormat = (event: ChangeEvent<HTMLSelectElement>) => {
+    setFormat(event.target.value as FormatGroup)
+  }
+
   return (
     <div className={containerClass}>
       <div className="w-1/2">
-        <h2 className="text-[40px] font-semibold mb-6">{title}</h2>
+        <h2 className="text-[40px] mb-6 font-bold">{title}</h2>
         <p className="text-xl mb-6">{description}</p>
         <div className="w-3/5 grid grid-cols-3 gap-3">
           <span className="text-xs flex text-slate-500">QUANTITY</span>
@@ -84,13 +88,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
             </NumberInput>
           </div>
           <div className="col-span-2">
-            <Select
-              size="sm"
-              value={format}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setFormat(event.target.value as FormatGroup)
-              }
-            >
+            <Select size="sm" value={format} onChange={changeFormat}>
               <option value="physical">Physical Copy</option>
               <option value="digital">Digital Copy</option>
             </Select>
@@ -99,7 +97,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
             {formattedPrice}
           </div>
           <Button
-            className="col-span-2"
+            className="col-span-2 !text-xs"
             colorScheme="facebook"
             onClick={clickAddToChart}
           >
@@ -114,6 +112,8 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
           alt={title}
           width={500}
           height={400}
+          quality={50}
+          priority={index === 0}
         />
       </div>
     </div>

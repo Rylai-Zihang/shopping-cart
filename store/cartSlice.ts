@@ -28,7 +28,8 @@ const cartSlice = createSlice({
       if (target) {
         target.quantity++
       } else {
-        state.cartProducts.push({ ...action.payload, quantity: 1 })
+        const quantity = action.payload.quantity
+        state.cartProducts.push({ ...action.payload, quantity })
       }
     },
     increaseQuantity: (state, action: PayloadAction<CartInfo>) => {
