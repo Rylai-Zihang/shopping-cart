@@ -47,7 +47,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
 
   const dispatch = useDispatch()
 
-  function clickAddToChart() {
+  const clickAddToChart = () => {
     const cartProduct: ICartProduct = {
       id,
       title,
@@ -59,6 +59,10 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
     }
     dispatch(addToCart(cartProduct))
     onToggle()
+  }
+
+  const changeFormat = (event: ChangeEvent<HTMLSelectElement>) => {
+    setFormat(event.target.value as FormatGroup)
   }
 
   return (
@@ -84,13 +88,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
             </NumberInput>
           </div>
           <div className="col-span-2">
-            <Select
-              size="sm"
-              value={format}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setFormat(event.target.value as FormatGroup)
-              }
-            >
+            <Select size="sm" value={format} onChange={changeFormat}>
               <option value="physical">Physical Copy</option>
               <option value="digital">Digital Copy</option>
             </Select>

@@ -14,6 +14,6 @@ yarn dev
 
 The site is deployed by Netlify
 
-To visit👉
+To visit 👉
 
 https://rylai-shopping-cart.netlify.app/
