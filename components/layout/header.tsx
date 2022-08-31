@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({ onToggle }) => {
         <div className="flex ite ms-center">
           <TriangleUpIcon h={9} className="mr-4" />
           <Link href="/">
-            <h1 className="text-2xl"> ReplicaZone</h1>
+            <h1 className="text-2xl font-bold">ReplicaZone</h1>
           </Link>
         </div>
         <div className="flex items-center">

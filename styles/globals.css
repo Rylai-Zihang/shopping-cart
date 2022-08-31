@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.image {
-  transform: perspective(650px) rotate(5deg) rotateX(-2.5deg) rotateY(-15deg)
-    scale(0.8) translateX(25px);
-  border-radius: 8px;
-}
-.image.left {
-  transform: perspective(650px) rotate(-5deg) rotateX(2.5deg) rotateY(15deg)
-    scale(0.8) translateX(-25px);
+@layer components {
+  .image {
+    transform: perspective(650px) rotate(5deg) rotateX(-2.5deg) rotateY(-15deg)
+      scale(0.8) translateX(25px);
+    border-radius: 8px;
+  }
+  .image.left {
+    transform: perspective(650px) rotate(-5deg) rotateX(2.5deg) rotateY(15deg)
+      scale(0.8) translateX(-25px);
+  }
 }
