@@ -78,7 +78,7 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
               value={quantity}
               size="sm"
               min={1}
-              onChange={(value: string) => setQuantity(parseInt(value || 0))}
+              onChange={(value: string) => setQuantity(parseInt(value || '0'))}
             >
               <NumberInputField />
               <NumberInputStepper>
