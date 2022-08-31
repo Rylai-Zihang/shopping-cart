@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({ onToggle }) => {
   const headerClass = useColorModeValue('light', 'dark')
 
   return (
-    <header className={headerClass}>
+    <header className={`header ${headerClass}`}>
       <Container className="py-5 flex justify-between">
         <div className="flex ite ms-center">
           <TriangleUpIcon h={9} className="mr-4" />

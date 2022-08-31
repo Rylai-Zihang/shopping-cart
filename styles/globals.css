@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  header::after,
-  footer::before {
+  .header::after,
+  .footer::before {
     content: '';
     display: block;
     width: 100%;
     background-color: #eaeaea;
     height: 1px;
   }
-  header.dark::after,
-  footer.dark::before {
+  .header.dark::after,
+  .footer.dark::before {
     opacity: 0.2;
   }
 }

@@ -4,7 +4,7 @@ import Container from '@/components/layout/container'
 const Footer = () => {
   const footerClass = useColorModeValue('light', 'dark')
   return (
-    <footer className={footerClass}>
+    <footer className={`footer ${footerClass}`}>
       <Container>
         <div className="py-8 flex items-center">
           <div className="text-xs text-center">
