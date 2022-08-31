@@ -9,7 +9,7 @@ import {
 } from '@/store/cartSlice'
 import { ICartProduct } from '@/typings/index'
 import { formatPrice } from '@/utils/index'
-import NumberInput from './numberInput'
+import NumberInput from '@/components/numberInput'
 
 interface Props {
   cartProduct: ICartProduct

@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ['demo.snipcart.com']
   },
+  // https://github.com/vercel/next.js/issues/10929
   webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,

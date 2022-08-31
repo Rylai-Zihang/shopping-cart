@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux'
 import { selectAllCartProducts } from '@/store/cartSlice'
 import { ICartProduct } from '@/typings/index'
 import { formatPrice, getTotalPrice } from '@/utils/index'
-import CartItem from './cartItem'
+import CartItem from '@/components/cartItem'
 
 interface Props {
   isOpen: boolean

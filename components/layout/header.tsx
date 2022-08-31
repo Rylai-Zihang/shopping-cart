@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 import { selectAllCartProducts } from '@/store/cartSlice'
 import { formatPrice, getTotalPrice } from '@/utils/index'
 import { ICartProduct } from '@/typings/index'
-import { ShoppingCart } from './icon'
-import Container from './container'
+import { ShoppingCart } from '@/components/icon'
+import Container from '@/components/layout/container'
 
 interface Props {
   onToggle: () => void

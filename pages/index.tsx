@@ -2,10 +2,10 @@ import type { NextPage } from 'next'
 import { Provider } from 'react-redux'
 import { ChakraProvider, useDisclosure } from '@chakra-ui/react'
 import store from '@/store/index'
-import Header from '@/components/header'
+import Header from '@/components/layout/header'
 import Products from '@/components/products'
 import Cart from '@/components/cart'
-import Footer from '@/components/footer'
+import Footer from '@/components/layout/footer'
 
 
 const Home: NextPage = () => {
