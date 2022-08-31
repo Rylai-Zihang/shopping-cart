@@ -13,3 +13,9 @@ export interface IProduct {
 export interface ICartProduct extends IProduct {
   quantity: number
 }
+
+export type SliceState = {
+  cartProducts: ICartProduct[]
+}
+
+export type CartInfo = { id: number; format: FormatGroup }

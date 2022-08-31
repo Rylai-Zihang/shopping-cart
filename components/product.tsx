@@ -10,9 +10,9 @@ import {
 import { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Image from 'next/image'
-import { IProduct, FormatGroup, ICartProduct } from '../typings'
-import { addToCart } from '../store/cartSlice'
-import { formatPrice } from '../utils'
+import { addToCart } from '@/store/cartSlice'
+import { classesHelper, formatPrice } from '@/utils/index'
+import { IProduct, FormatGroup, ICartProduct } from '@/typings/index'
 
 interface Props {
   product: IProduct
@@ -27,10 +27,23 @@ const Product: React.FC<Props> = ({ product, onToggle, index }) => {
   const totalPrice = price[format] * quantity
   const formattedPrice = formatPrice(totalPrice)
 
-  const containerClass = `py-8 flex${
-    index % 2 === 1 ? ' flex-row-reverse' : ''
-  }`
-  const imageClass = `image${index % 2 === 1 ? ' left' : ''}`
+  const containerClass = classesHelper(
+    {
+      'flex-row-reverse': index % 2 === 1
+    },
+    {
+      extra: 'py-8 flex'
+    }
+  )
+
+  const imageClass = classesHelper(
+    {
+      left: index % 2 === 1
+    },
+    {
+      extra: 'image'
+    }
+  )
 
   const dispatch = useDispatch()
 

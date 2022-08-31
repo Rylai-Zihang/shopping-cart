@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react'
+import { classesHelper } from '@/utils/index'
 
 interface Props extends HTMLAttributes<HTMLElement> {
   children: React.ReactElement | string | Array<React.ReactElement | string>
@@ -6,9 +7,12 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 const Container: React.FC<Props> = ({ children, ...props }) => {
   const { className, ...otherProps } = props
-  const classes = `container mx-auto px-[15%]${
-    className ? ` ${className}` : ''
-  }`
+  const classes = classesHelper(
+    'container mx-auto px-[15%] md:px-[10%] sm:px-[5%]',
+    {
+      extra: className
+    }
+  )
   return (
     <div className={classes} {...otherProps}>
       {children}

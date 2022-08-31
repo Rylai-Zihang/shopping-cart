@@ -10,10 +10,10 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store'
-import { ICartProduct } from '../typings'
-import { formatPrice } from '../utils'
-import CartItem from './cartItem'
+import { selectAllCartProducts } from '@/store/cartSlice'
+import { ICartProduct } from '@/typings/index'
+import { formatPrice, getTotalPrice } from '@/utils/index'
+import CartItem from '@/components/cartItem'
 
 interface Props {
   isOpen: boolean
@@ -21,14 +21,8 @@ interface Props {
 }
 
 const Cart: React.FC<Props> = ({ isOpen, onClose }) => {
-  const cartProducts: ICartProduct[] = useSelector<RootState, ICartProduct[]>(
-    state => state.cart.cartProducts
-  )
-
-  const totalPrice = cartProducts.reduce((sum, product) => {
-    const { price, format, quantity } = product
-    return sum + quantity * price[format]
-  }, 0)
+  const cartProducts: ICartProduct[] = useSelector(selectAllCartProducts)
+  const totalPrice = getTotalPrice(cartProducts)
   const formattedPrice = formatPrice(totalPrice)
 
   const headerBackgroundColor = useColorModeValue('#f7f7f8', 'gray.800')

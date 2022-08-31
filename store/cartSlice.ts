@@ -1,22 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { FormatGroup , ICartProduct } from './../typings/index'
-
-type SliceState = {
-  cartProducts: ICartProduct[]
-}
-
-type CartInfo = { id: number; format: FormatGroup }
+import { ICartProduct, SliceState, CartInfo } from '@/typings/index'
+import { RootState } from './index'
 
 const initialState: SliceState = {
   cartProducts: []
 }
 
-type K = (keyof ICartProduct)[]
-
 const findTarget = (
   list: ICartProduct[],
   source: Partial<ICartProduct>,
-  keys: K
+  keys: (keyof ICartProduct)[]
 ) => {
   return list.find(item => {
     return keys.reduce((pre, key) => pre && source[key] === item[key], true)
@@ -78,3 +71,6 @@ export const {
   decreaseQuantity,
   removeItem
 } = cartSlice.actions
+
+export const selectAllCartProducts = (state: RootState) =>
+  state.cart.cartProducts
