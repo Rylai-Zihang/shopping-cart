@@ -32,8 +32,8 @@ const Header: React.FC<Props> = ({ onToggle }) => {
       <Container className="py-5 flex justify-between">
         <div className="flex ite ms-center">
           <TriangleUpIcon h={9} className="mr-4" />
-          <Link href="/">
-            <h1 className="text-2xl font-bold">ReplicaZone</h1>
+          <Link href="/#">
+            <h1 className="text-2xl font-bold cursor-pointer">ReplicaZone</h1>
           </Link>
         </div>
         <div className="flex items-center">
